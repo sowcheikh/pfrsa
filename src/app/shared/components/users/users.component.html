@@ -1,0 +1,70 @@
+<div class="container-fluid">
+  <div class="row page-title-div">
+    <div class="col-md-6">
+      <h2 class="title">liste des utilisateurs</h2>
+      <p class="sub-title">users</p>
+    </div>
+    <!-- /.col-md-6 -->
+    <div class="col-md-6 right-side">
+      <a class="btn bg-black toggle-code-handle" role="button">Toggle Code!</a>
+    </div>
+    <!-- /.col-md-6 text-right -->
+  </div>
+  <!-- /.row -->
+  <div class="row breadcrumb-div">
+    <div class="col-md-6">
+      <ul class="breadcrumb">
+        <li><a [routerLink]="'dashboard'"><i class="fa fa-home"></i> Home</a></li>
+        <li class="active">Tables - Basic</li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.row -->
+</div>
+<!-- /.container-fluid -->
+
+<section class="section">
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+          <div class="panel-body p-20">
+
+            <table class="table table-striped">
+              <caption>Optional table caption.</caption>
+              <thead>
+              <tr>
+                <th>#</th>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Action</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let user of users">
+                <th scope="row">1</th>
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.email}}</td>
+                <td>
+                  <button>modifier</button>
+                  <button (click)="onDelete(user.id)">supprimer</button>
+                </td>
+              </tr>
+              <tbody>
+            </table>
+          </div>
+        </div>
+        <!-- /.panel -->
+      </div>
+      <!-- /.col-md-6 -->
+
+
+
+
+    </div>
+    <!-- /.row -->
+  <!-- /.container-fluid -->
+</section>
+<!-- /.section -->
