@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {User} from '../models/user';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import jwt_decode from 'jwt-decode';
 
@@ -10,6 +10,8 @@ import jwt_decode from 'jwt-decode';
   providedIn: 'root'
 })
 export class AuthService {
+
+  private currentUserSubject: BehaviorSubject<User>;
   constructor(private http: HttpClient) {
   }
 
@@ -24,6 +26,11 @@ export class AuthService {
         }
       }));
   }
+  // tslint:disable-next-line:typedef
+  logout() {
+    localStorage.removeItem('currentUser');
+    localStorage.removeItem('currentUserInfo');
+    this.currentUserSubject.next(null);  }
 
   getUser(): Observable<any> {
     return this.http.get<User>(`${environment.url}/api/admin/users`);
@@ -31,10 +38,7 @@ export class AuthService {
 
   // tslint:disable-next-line:typedef
   isLogin() {
-    if (localStorage.getItem('currentUser')) {
-      return true;
-    }
-    return false;
+    return !!localStorage.getItem('currentUser');
   }
 
   // tslint:disable-next-line:typedef

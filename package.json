@@ -23,7 +23,6 @@
     "@angular/router": "~10.1.0",
     "bootstrap": "^4.5.3",
     "jwt-decode": "^3.1.2",
-    "ngx-ui-switch": "^10.0.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

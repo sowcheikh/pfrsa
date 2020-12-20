@@ -4,21 +4,25 @@ import {LoginComponent} from '../login/login.component';
 import {UsersComponent} from './components/users/users.component';
 import {DashboardComponent} from '../dashboard/dashboard.component';
 import {ProfilComponent} from './components/profil/profil.component';
+import {AddProfileComponent} from './components/add-profile/add-profile.component';
 
 const routes: Routes = [
   {
     path: '', component: LoginComponent
   },
   {
-    path: 'users', component: UsersComponent
-  },
-  {
-    path: 'profile', component: ProfilComponent
-  },
-  {
-    path: 'dashboard', component: DashboardComponent
-  },
-  { path: '**', redirectTo: '' }
+    path: 'dashboard', component: DashboardComponent,
+    children: [
+      {
+        path: 'users', component: UsersComponent
+      },
+      {
+        path: 'profile', component: ProfilComponent
+      },
+      { path: 'add', component: AddProfileComponent },
+      { path: 'edit/:id', component: AddProfileComponent }
+    ]
+  }
 ];
 
 @NgModule({

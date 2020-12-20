@@ -1,0 +1,20 @@
+<h1 *ngIf="isAddMode">Ajouter un profile</h1>
+<h1 *ngIf="!isAddMode">Modifier le profile</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-row">
+    <div class="form-group col-5">
+      <label>Libelle</label>
+      <input type="text" formControlName="libelle" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.libelle.errors }" />
+      <div *ngIf="submitted && f.libelle.errors" class="invalid-feedback">
+        <div *ngIf="f.libelle.errors.required">Libelle is required</div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group text-right col-5">
+    <button [disabled]="loading" class="btn btn-primary">
+      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+      Ajouter
+    </button>
+    <a routerLink="/dashboard/profile" class="btn btn-danger ml-1">Annuler</a>
+  </div>
+</form>

@@ -20,13 +20,6 @@ export class UserService {
         retry(1),
       );
   }
-
-  getAllProfile(): Observable<Profile[]> {
-    return this.http.get<Profile[]>(`${environment.url}/api/admin/profils`)
-      .pipe(
-        retry(1),
-      );
-  }
   // tslint:disable-next-line:typedef
   getById(id: string) {
     return this.http.get<User>(`${environment.url}/api/admin/users/${id}`);

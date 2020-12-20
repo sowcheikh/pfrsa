@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       res => {
         // tslint:disable-next-line:triple-equals
         if ( res == 'ROLE_ADMIN') {
-          this.router.navigate(['/users']);
+          this.router.navigate(['/dashboard']);
 
         } else{
           console.log('non');
